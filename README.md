@@ -46,7 +46,8 @@ $ sudo systemctl reboot
 3. Set up port forwarding between the host and the VM.
 
 ```console
-$ curl http://0.0.0.0:7777/services/forwarder/expose -X POST -d '{"local":":9002","remote":"192.168.127.2:9002"}'
+$ curl http://0.0.0.0:7777/services/forwarder/expose \
+       -X POST -d '{"local":":9002","remote":"192.168.127.2:9002"}'
 ```
 
 4. Create a container for running the rest of components
@@ -60,7 +61,8 @@ $ podman build -t keylime-no-agent:latest container
 1. Run the container
 
 ```console
-$ podman run -ti -p 8890:8890 -p 8891:8891 -p 8881:8881 -p 8992:8992 localhost/keylime-no-agent:latest
+$ podman run -ti -p 8890:8890 -p 8891:8891 -p 8881:8881 -p 8992:8992 \
+             localhost/keylime-no-agent:latest
 ```
 
 2. Run swtpm
@@ -88,7 +90,8 @@ $ sudo -i
 2. Set up IMA policy
 
 ```console
-# cat ~core/rust-keylime-fcos34/ima-policies/ima-policy-keylime > /sys/kernel/security/ima/policy
+# cat ~core/rust-keylime-fcos34/ima-policies/ima-policy-keylime \
+      > /sys/kernel/security/ima/policy
 ```
 
 3. Run swtpm
@@ -108,7 +111,7 @@ $ sudo -i
 ```console
 # cp ~core/rust-keylime-fcos34/keylime.conf .
 # sed -i -e '/cloudagent_ip = /s/127\.0\.0\.1/0.0.0.0/' \
-		 -e '/registrar_ip = /s/127\.0\.0\.1/192.168.128.1/' keylime.conf
+         -e '/registrar_ip = /s/127\.0\.0\.1/192.168.128.1/' keylime.conf
 # RUST_LOG=keylime_agent=trace KEYLIME_CONFIG=$PWD/keylime.conf keylime_agent
 ```
 
