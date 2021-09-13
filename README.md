@@ -122,6 +122,8 @@ $ sudo -i
 (in the container)
 
 ```console
+$ keylime_tenant -v 192.168.128.1 -t 192.168.127.2 \
+                 -u d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -c status
 $ echo test > somefile
 $ keylime_tenant -v 192.168.128.1 -t 192.168.127.2 \
                  -u d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -f somefile -c add
@@ -136,4 +138,3 @@ those files.
 [gvisor-tap-vsock]: https://github.com/containers/gvisor-tap-vsock
 [rust-keylime]: https://github.com/keylime/rust-keylime
 [keylime]: https://github.com/keylime/keylime
-
