@@ -25,6 +25,8 @@ RUN dnf install -y \
     python3-tornado \
     python3-yaml \
     python3-zmq \
+    swtpm \
+    swtpm-tools \
     systemd \
     tpm2-tools
 
