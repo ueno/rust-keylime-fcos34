@@ -23,6 +23,7 @@ the host.  Work in progress.
    [gvisor-tap-vsock] launched by `podman machine`
 
 ```console
+$ sudo ip addr add 192.168.127.1/255.255.255.0 dev lo
 $ sudo ip addr add 192.168.128.1/255.255.255.0 dev lo
 ```
 
@@ -118,6 +119,7 @@ $ sudo -i
 (in the container)
 
 ```console
+$ echo test > somefile
 $ keylime_tenant -v 192.168.128.1 -t 192.168.127.2 \
                  -u d432fbb3-d2f1-4a97-9ef7-75bd81c00000 -f somefile -c add
 ```
