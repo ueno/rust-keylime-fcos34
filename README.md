@@ -40,6 +40,7 @@ $ podman machine ssh fcos34
 $ git clone https://github.com/ueno/rust-keylime-fcos34
 $ sudo rpm-ostree install swtpm swtpm-tools https://download.copr.fedorainfracloud.org/results/ueno/rust-keylime/fedora-34-x86_64/02690049-rust-keylime_agent/keylime_agent-0.1.0~20210912g6aa43983-1.fc34.x86_64.rpm
 $ sudo systemctl reboot
+```
 
 3. Set up port forwarding between the host and the VM.
 
@@ -104,7 +105,10 @@ $ sudo -i
 4. Run `keylime_agent` (listening on 0.0.0.0 instead of 127.0.0.1)
 
 ```console
-# RUST_LOG=keylime_agent=trace KEYLIME_CONFIG=~core/rust-keylime-fcos34/keylime.conf keylime_agent
+# cp ~core/rust-keylime-fcos34/keylime.conf .
+# sed -i -e '/cloudagent_ip = /s/127\.0\.0\.1/0.0.0.0/' \
+		 -e '/registrar_ip = /s/127\.0\.0\.1/192.168.128.1/' keylime.conf
+# RUST_LOG=keylime_agent=trace KEYLIME_CONFIG=$PWD/keylime.conf keylime_agent
 ```
 
 ### Access the agent through `keylime_tenant`
