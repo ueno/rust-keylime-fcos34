@@ -77,32 +77,32 @@ $ keylime_registrar &
 
 ### Running `keylime_agent` on the VM
 
-0. SSH to the VM and start a root session
+1. SSH to the VM and start a root session
 
 ```console
 $ podman machine ssh fcos34
 $ sudo -i
 ```
 
-1. Set up IMA policy
+2. Set up IMA policy
 
 ```console
 # cat ~core/rust-keylime-fcos34/ima-policies/ima-policy-keylime > /sys/kernel/security/ima/policy
 ```
 
-2. Run swtpm
+3. Run swtpm
 
 ```console
 # . ~core/rust-keylime-fcos34/container/setup_swtpm.sh
 ```
 
-3. Run `keylime_ima_emulator` in background
+4. Run `keylime_ima_emulator` in background
 
 ```console
 # keylime_ima_emulator &
 ```
 
-4. Run `keylime_agent` (listening on 0.0.0.0 instead of 127.0.0.1)
+5. Run `keylime_agent` (listening on 0.0.0.0 instead of 127.0.0.1)
 
 ```console
 # cp ~core/rust-keylime-fcos34/keylime.conf .
