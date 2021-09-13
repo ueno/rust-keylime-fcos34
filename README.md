@@ -17,10 +17,10 @@ the host.  Work in progress.
 
 ### Preparation on the host
 
-1. Set up a different network address for containerized services
-   (`keylime_verifier` and `keylime_registrar`). This is necessary for
-   the Fedora CoreOS guest can see the services on the host through
-   [gvisor-tap-vsock] launched by `podman machine`
+1. Set up private networks for containerized services
+   (`keylime_verifier` and `keylime_registrar`) and the VM. This is
+   necessary for the Fedora CoreOS guest to see the services on the
+   host through [gvisor-tap-vsock] launched by `podman machine`
 
 ```console
 $ sudo ip addr add 192.168.127.1/255.255.255.0 dev lo
