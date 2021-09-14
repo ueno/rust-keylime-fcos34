@@ -74,8 +74,8 @@ $ podman run -ti -p 8890:8890 -p 8891:8891 -p 8881:8881 -p 8992:8992 \
 3. Run the `keylime_verifier` and `keylime_registrar` services in background
 
 ```console
-$ keylime_verifier &
-$ keylime_registrar &
+# keylime_verifier &
+# keylime_registrar &
 ```
 
 ### Running `keylime_agent` on the VM
