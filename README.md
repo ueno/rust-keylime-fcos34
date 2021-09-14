@@ -6,11 +6,11 @@ the host.  Work in progress.
 
 ## Setup
 
-- `keylime_agent` from [rust-keylime] will run on Fedora CoreOS VM.
+- `keylime_agent` from [rust-keylime] runs on a Fedora 34 CoreOS VM.
   The service listens on 192.168.127.2:9002.
 
-- `keylime_verifier` and `keylime_registrar` from Python Keylime will
-  run on a Fedora 34 based container.  Those services listens on
+- `keylime_verifier` and `keylime_registrar` from Python Keylime runs
+  on a Fedora 34 based container.  Those services listen on
   192.168.128.1:*.
 
 ## Steps
@@ -18,9 +18,9 @@ the host.  Work in progress.
 ### Preparation on the host
 
 1. Set up private networks for containerized services
-   (`keylime_verifier` and `keylime_registrar`) and the VM. This is
-   necessary for the Fedora CoreOS guest to see the services on the
-   host through [gvisor-tap-vsock] launched by `podman machine`
+   (`keylime_verifier` and `keylime_registrar`) and the VM. This step
+   is necessary for the VM guest to see the services on the host
+   through [gvisor-tap-vsock] launched by `podman machine`
 
 ```console
 $ sudo ip addr add 192.168.127.1/255.255.255.0 dev lo
