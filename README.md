@@ -119,7 +119,7 @@ $ sudo -i
 
 1. Run `keylime_tenant` to register the agent
 
-(in the container)
+(in the container or host)
 
 ```console
 $ keylime_tenant -v 192.168.128.1 -t 192.168.127.2 \
