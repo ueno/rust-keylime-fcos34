@@ -39,7 +39,7 @@ $ podman machine ssh fcos34
 
 ```console
 $ git clone https://github.com/ueno/rust-keylime-fcos34
-$ sudo rpm-ostree install swtpm swtpm-tools https://download.copr.fedorainfracloud.org/results/ueno/rust-keylime/fedora-34-x86_64/02690049-rust-keylime_agent/keylime_agent-0.1.0~20210912g6aa43983-1.fc34.x86_64.rpm
+$ sudo rpm-ostree install swtpm swtpm-tools tpm2-abrmd https://download.copr.fedorainfracloud.org/results/ueno/rust-keylime/fedora-34-x86_64/02869700-rust-keylime_agent/keylime_agent-0.1.0~20211001gf5c1e9be-1.fc34.x86_64.rpm
 $ sudo systemctl reboot
 ```
 
