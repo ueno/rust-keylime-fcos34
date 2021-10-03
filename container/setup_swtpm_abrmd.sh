@@ -7,7 +7,7 @@ if test -n "$DBUS_SESSION_BUS_PID"; then
 fi
 
 dbus-uuidgen --ensure
-eval `dbus-launch --sh-syntax --exit-with-session`
+eval `dbus-launch --sh-syntax`
 export XDG_CONFIG_HOME=$HOME/.config
 /usr/share/swtpm/swtpm-create-user-config-files --root
 mkdir -p ${XDG_CONFIG_HOME}/mytpm1
