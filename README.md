@@ -39,7 +39,7 @@ $ podman machine ssh fcos34
 
 ```console
 $ git clone https://github.com/ueno/rust-keylime-fcos34
-$ sudo rpm-ostree install swtpm swtpm-tools tpm2-abrmd https://download.copr.fedorainfracloud.org/results/ueno/rust-keylime/fedora-34-x86_64/02869700-rust-keylime_agent/keylime_agent-0.1.0~20211001gf5c1e9be-1.fc34.x86_64.rpm
+$ sudo rpm-ostree install dbus-tools dbus-x11 swtpm swtpm-tools tpm2-abrmd https://download.copr.fedorainfracloud.org/results/ueno/rust-keylime/fedora-34-x86_64/02869700-rust-keylime_agent/keylime_agent-0.1.0~20211001gf5c1e9be-1.fc34.x86_64.rpm
 $ sudo systemctl reboot
 ```
 
@@ -97,7 +97,7 @@ $ sudo -i
 3. Run swtpm
 
 ```console
-# . ~core/rust-keylime-fcos34/container/setup_swtpm.sh
+# . ~core/rust-keylime-fcos34/container/setup_swtpm_abrmd.sh
 ```
 
 4. Run `keylime_ima_emulator` in background

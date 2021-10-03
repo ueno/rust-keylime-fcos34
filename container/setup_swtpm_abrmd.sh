@@ -6,6 +6,7 @@ if test -n "$DBUS_SESSION_BUS_PID"; then
     kill "$DBUS_SESSION_BUS_PID"
 fi
 
+dbus-uuidgen --ensure
 eval `dbus-launch --sh-syntax --exit-with-session`
 export XDG_CONFIG_HOME=$HOME/.config
 /usr/share/swtpm/swtpm-create-user-config-files --root
