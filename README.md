@@ -30,15 +30,15 @@ $ sudo ip addr add 192.168.128.1/255.255.255.0 dev lo
 2. Create a Fedora CoreOS VM for running the Rust agent
 
 ```console
-$ podman machine init fcos34
-$ podman machine start fcos34
-$ podman machine ssh fcos34
+$ podman machine init fcos
+$ podman machine start fcos
+$ podman machine ssh fcos
 ```
 
 (in the VM session)
 
 ```console
-$ git clone https://github.com/ueno/rust-keylime-fcos34
+$ git clone https://github.com/ueno/rust-keylime-fcos
 $ sudo rpm-ostree install dbus-tools dbus-x11 swtpm swtpm-tools tpm2-abrmd https://download.copr.fedorainfracloud.org/results/ueno/rust-keylime/fedora-34-x86_64/02869700-rust-keylime_agent/keylime_agent-0.1.0~20211001gf5c1e9be-1.fc34.x86_64.rpm
 $ sudo systemctl reboot
 ```
@@ -65,13 +65,7 @@ $ podman run -ti -p 8890:8890 -p 8891:8891 -p 8881:8881 -p 8992:8992 \
              localhost/keylime-no-agent:latest
 ```
 
-2. Run swtpm
-
-```console
-# . setup_swtpm.sh
-```
-
-3. Run the `keylime_verifier` and `keylime_registrar` services in background
+2. Run the `keylime_verifier` and `keylime_registrar` services in background
 
 ```console
 # keylime_verifier &
@@ -83,21 +77,21 @@ $ podman run -ti -p 8890:8890 -p 8891:8891 -p 8881:8881 -p 8992:8992 \
 1. SSH to the VM and start a root session
 
 ```console
-$ podman machine ssh fcos34
+$ podman machine ssh fcos
 $ sudo -i
 ```
 
 2. Set up IMA policy
 
 ```console
-# cat ~core/rust-keylime-fcos34/ima-policies/ima-policy-keylime \
+# cat ~core/rust-keylime-fcos/ima-policies/ima-policy-keylime \
       > /sys/kernel/security/ima/policy
 ```
 
 3. Run swtpm
 
 ```console
-# . ~core/rust-keylime-fcos34/container/setup_swtpm_abrmd.sh
+# . ~core/rust-keylime-fcos/container/setup_swtpm_abrmd.sh
 ```
 
 4. Run `keylime_ima_emulator` in background
@@ -109,7 +103,7 @@ $ sudo -i
 5. Run `keylime_agent` (listening on 0.0.0.0 instead of 127.0.0.1)
 
 ```console
-# cp ~core/rust-keylime-fcos34/keylime.conf .
+# cp ~core/rust-keylime-fcos/keylime.conf .
 # sed -i -e '/cloudagent_ip = /s/127\.0\.0\.1/0.0.0.0/' \
          -e '/registrar_ip = /s/127\.0\.0\.1/192.168.128.1/' keylime.conf
 # RUST_LOG=keylime_agent=trace KEYLIME_CONFIG=$PWD/keylime.conf keylime_agent
